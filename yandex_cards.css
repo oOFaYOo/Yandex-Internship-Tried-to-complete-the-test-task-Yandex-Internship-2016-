@@ -1,0 +1,51 @@
+body {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+#added, #final_path {
+    width: 250px;
+    height: 150px;
+}
+
+#about {
+    height: 100px;
+    width: 95%;
+    position: relative;
+    margin-top: 5px;
+}
+
+#from {
+
+    margin-bottom: 10px;
+}
+
+form {
+    position: relative;
+    width: 30%;
+    padding: 5px;
+    min-width: 455px;
+    min-height: 545px;
+    margin: auto;
+    margin-top: 5%;
+}
+
+button {
+    width: 45%;
+    position: relative;
+}
+
+#add_path {
+    margin-right: 5%;
+}
+
+#from, #to {
+    width: 35%;
+    position: relative;
+}

@@ -4,23 +4,20 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script defer type="text/javascript" src="yandex_cards.js"></script>
+    <link rel="stylesheet" href="yandex_cards.css">
 </head>
 <body>
 <form>
-<form>
-<label rel="from">Откуда: <input id="from" type="text"></label>
-<label rel="to">Куда: <input id="to" type="text"></label>
-<label rel="about">Подробности маршрута: <input id="about" type="text"></label>
-
-<button id="add_path" type="submit">Добавить</button>
-</form>
-
-<div id="added" style="border: black 1px solid; width: 100px; height: 60px;"></div>
-
-<h3>Итоговый маршрут: </h3>
-<div id="final_path" style="border: black 1px solid; width: 100px; height: 60px;"></div>
-
-<button id="get_path" type="submit">Создать маршрут</button>
+    <label rel="from">Откуда: <input id="from" type="text" placeholder="Название города" required></label>
+    <label rel="to">Куда: <input id="to" type="text" placeholder="Название города" required></label><br>
+    <label rel="about">Подробности маршрута: <br>
+        <textarea id="about" placeholder="Подробное описание маршрута, транспорта, номера места и тд." required></textarea>
+    </label><br>
+    <button id="add_path" type="button">Добавить</button>
+    <button id="get_path" type="submit">Создать маршрут</button>
+    <div id="added"></div>
+    <h3>Итоговый маршрут: </h3>
+    <div id="final_path"></div>
 </form>
 </body>
 </html>
