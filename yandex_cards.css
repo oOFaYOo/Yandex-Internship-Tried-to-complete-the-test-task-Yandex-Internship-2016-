@@ -4,26 +4,8 @@ body {
     height: 100%;
 }
 
-p {
-    margin: 0;
-    padding: 0;
-}
-
-#added, #final_path {
-    width: 250px;
-    height: 150px;
-}
-
-#about {
-    height: 100px;
-    width: 95%;
-    position: relative;
-    margin-top: 5px;
-}
-
-#from {
-
-    margin-bottom: 10px;
+#from, #from_place, #num_of_seat, #to_place, #transport {
+    margin-bottom: 5px;
 }
 
 form {
@@ -33,7 +15,7 @@ form {
     min-width: 455px;
     min-height: 545px;
     margin: auto;
-    margin-top: 5%;
+    margin-top: 1%;
 }
 
 button {
@@ -45,7 +27,22 @@ button {
     margin-right: 5%;
 }
 
-#from, #to {
+#from, #to{
     width: 35%;
+    position: relative;
+}
+
+#from_place, #to_place {
+    width: 68%;
+}
+
+#num_of_seat, #transport{
+    width: 69%;
+}
+
+p, #added, #final_path {
+    width: 95%;
+    margin: 0;
+    padding: 0;
     position: relative;
 }

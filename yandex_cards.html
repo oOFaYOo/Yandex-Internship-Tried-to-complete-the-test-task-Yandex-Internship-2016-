@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script defer type="text/javascript" src="yandex_cards.js"></script>
+    <script defer type="module" src="yandex_cards.js"></script>
+    <script defer type="module" src="api_sortCards.js"></script>
     <link rel="stylesheet" href="yandex_cards.css">
 </head>
 <body>
 <form>
     <label rel="from">Откуда: <input id="from" type="text" placeholder="Название города" required></label>
     <label rel="to">Куда: <input id="to" type="text" placeholder="Название города" required></label><br>
-    <label rel="about">Подробности маршрута: <br>
-        <textarea id="about" placeholder="Подробное описание маршрута, транспорта, номера места и тд." required></textarea>
-    </label><br>
+    <label rel="transport">Вид транспорта: <input id="transport" type="text" placeholder="Транспортное средство" required></label><br>
+    <label rel="from_place">Место отправки: <input id="from_place" type="text" placeholder="Аэропорт, вокзал, название, номер и тд." required></label><br>
+    <label rel="to_place">Место прибытия:<input id="to_place" type="text" placeholder="Аэропорт, вокзал, название, номер и тд." required></label><br>
+    <label rel="num_of_seat">Номер сидения: <input id="num_of_seat" type="text" placeholder="Номер сидения" required></label><br>
     <button id="add_path" type="button">Добавить</button>
     <button id="get_path" type="submit">Создать маршрут</button>
     <div id="added"></div>
