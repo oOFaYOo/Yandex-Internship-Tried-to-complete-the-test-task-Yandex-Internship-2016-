@@ -3,6 +3,7 @@
 "use strict";
 
 import {sortCards} from "./api_sortCards.js";
+import {Card} from "./api_sortCards.js";
 
 const from = document.getElementById("from");
 const to = document.getElementById("to");
@@ -17,32 +18,15 @@ const getPath = document.getElementById("get_path");
 
 let unsortedCards = [];
 
-class Card {
-    constructor(from, to, fromPlace, toPlace, transport, numOfSeat) {
-        this.from = from.toLowerCase();
-        this.to = to.toLowerCase();
-        this.fromPlace = fromPlace;
-        this.toPlace = toPlace;
-        this.transport = transport;
-        this.numOfSeat = numOfSeat;
-    }
-}
-
 addPath.onclick = () => {
-    if (from.value !== "" &&
-        to.value !== "" &&
-        transport.value !== "" &&
-        fromPlace.value !== "" &&
-        toPlace.value !== "" &&
-        numOfSeat.value !== "") {
+    if (compare()) {
         unsortedCards.push(new Card(from.value, to.value, fromPlace.value, toPlace.value, transport.value, numOfSeat.value));
-        added.innerHTML = added.innerHTML + `<p>- Начало пути в городе ${formatWordToSentenceStandard(from.value)}. Отправление из ${fromPlace.value}. Используемый транспорт ${transport.value.toLowerCase()}. Сиденье №${numOfSeat.value}. Прибытие в ${toPlace.value} города ${formatWordToSentenceStandard(to.value)}.</p>`;
-        from.value = "";
-        to.value = "";
-        fromPlace.value = "";
-        toPlace.value = "";
-        transport.value = "";
-        numOfSeat.value = "";
+        added.innerHTML = added.innerHTML + `<p>- Начало пути в городе ${formatWordToSentenceStandard(from.value)}.`+
+                                            `Отправление из ${fromPlace.value}.`+
+                                            `Используемый транспорт ${transport.value.toLowerCase()}.`+
+                                            `Сиденье №${numOfSeat.value}.`+
+                                            `Прибытие в ${toPlace.value} города ${formatWordToSentenceStandard(to.value)}.</p>`;
+        assign();
     } else {
         let errorMessage = "Пожалуйста, заполните пустые поля";
         alert(errorMessage);
@@ -53,29 +37,44 @@ addPath.onclick = () => {
 getPath.onclick = () => {
     finalPath.innerHTML = "";
     if(unsortedCards.length === 0 &&
-        from.value !== "" &&
-        to.value !== "" &&
-        transport.value !== "" &&
-        fromPlace.value !== "" &&
-        toPlace.value !== "" &&
-        numOfSeat.value !== ""){
-        finalPath.innerHTML = finalPath.innerHTML + `<p>- Начало пути в городе ${formatWordToSentenceStandard(from.value)}. Отправление из ${fromPlace.value}. Используемый транспорт ${transport.value.toLowerCase()}. Сиденье №${numOfSeat.value}. Прибытие в ${toPlace.value} города ${formatWordToSentenceStandard(to.value)}.</p>`;
+        compare()){
+        finalPath.innerHTML = finalPath.innerHTML + `<p>- Начало пути в городе ${formatWordToSentenceStandard(from.value)}.`+
+                                                    `Отправление из ${fromPlace.value}.`+
+                                                    `Используемый транспорт ${transport.value.toLowerCase()}.`+
+                                                    `Сиденье №${numOfSeat.value}.`+
+                                                    `Прибытие в ${toPlace.value} города ${formatWordToSentenceStandard(to.value)}.</p>`;
     }
     let sortedCards = sortCards(unsortedCards);
-    from.value = "";
-    to.value = "";
-    fromPlace.value = "";
-    toPlace.value = "";
-    transport.value = "";
-    numOfSeat.value = "";
+    assign();
     added.innerHTML = "";
     for (let card of sortedCards) {
-        finalPath.innerHTML = finalPath.innerHTML + `<p>- Начало пути в городе ${formatWordToSentenceStandard(card.from)}. Отправление из ${card.fromPlace}. Используемый транспорт ${card.transport.toLowerCase()}. Сиденье №${card.numOfSeat}. Прибытие в ${card.toPlace} города ${formatWordToSentenceStandard(card.to)}.</p>`;
+        finalPath.innerHTML = finalPath.innerHTML + `<p>- Начало пути в городе ${formatWordToSentenceStandard(card.from)}.`+
+                                                    `Отправление из ${card.fromPlace}.`+
+                                                    `Используемый транспорт ${card.transport.toLowerCase()}.`+
+                                                    `Сиденье №${card.numOfSeat}.`+
+                                                    `Прибытие в ${card.toPlace} города ${formatWordToSentenceStandard(card.to)}.</p>`;
     }
-    sortedCards = [];
+    unsortedCards = [];
 };
 
 function formatWordToSentenceStandard(string) {
     return string[0].toUpperCase()+string.slice(1);
 }
 
+function compare() {
+    return (from.value !== "" &&
+        to.value !== "" &&
+        transport.value !== "" &&
+        fromPlace.value !== "" &&
+        toPlace.value !== "" &&
+        numOfSeat.value !== "")
+}
+
+function assign() {
+    from.value = "";
+    to.value = "";
+    fromPlace.value = "";
+    toPlace.value = "";
+    transport.value = "";
+    numOfSeat.value = "";
+}
