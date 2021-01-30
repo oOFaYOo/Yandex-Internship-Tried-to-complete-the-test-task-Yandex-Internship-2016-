@@ -22,10 +22,10 @@ addPath.onclick = () => {
     if (compare()) {
         unsortedCards.push(new Card(from.value, to.value, fromPlace.value, toPlace.value, transport.value, numOfSeat.value));
         added.innerHTML = added.innerHTML + `<p>- Начало пути в городе ${formatWordToSentenceStandard(from.value)}.`+
-                                            `Отправление из ${fromPlace.value}.`+
+                                            `Отправление ${fromPlace.value}.`+
                                             `Используемый транспорт ${transport.value.toLowerCase()}.`+
                                             `Сиденье №${numOfSeat.value}.`+
-                                            `Прибытие в ${toPlace.value} города ${formatWordToSentenceStandard(to.value)}.</p>`;
+                                            `Прибытие ${toPlace.value} города ${formatWordToSentenceStandard(to.value)}.</p>`;
         assign();
     } else {
         let errorMessage = "Пожалуйста, заполните пустые поля";
@@ -39,20 +39,20 @@ getPath.onclick = () => {
     if(unsortedCards.length === 0 &&
         compare()){
         finalPath.innerHTML = finalPath.innerHTML + `<p>- Начало пути в городе ${formatWordToSentenceStandard(from.value)}.`+
-                                                    `Отправление из ${fromPlace.value}.`+
+                                                    `Отправление ${fromPlace.value}.`+
                                                     `Используемый транспорт ${transport.value.toLowerCase()}.`+
                                                     `Сиденье №${numOfSeat.value}.`+
-                                                    `Прибытие в ${toPlace.value} города ${formatWordToSentenceStandard(to.value)}.</p>`;
+                                                    `Прибытие ${toPlace.value} города ${formatWordToSentenceStandard(to.value)}.</p>`;
     }
     let sortedCards = sortCards(unsortedCards);
     assign();
     added.innerHTML = "";
     for (let card of sortedCards) {
         finalPath.innerHTML = finalPath.innerHTML + `<p>- Начало пути в городе ${formatWordToSentenceStandard(card.from)}.`+
-                                                    `Отправление из ${card.fromPlace}.`+
+                                                    `Отправление ${card.fromPlace}.`+
                                                     `Используемый транспорт ${card.transport.toLowerCase()}.`+
                                                     `Сиденье №${card.numOfSeat}.`+
-                                                    `Прибытие в ${card.toPlace} города ${formatWordToSentenceStandard(card.to)}.</p>`;
+                                                    `Прибытие ${card.toPlace} города ${formatWordToSentenceStandard(card.to)}.</p>`;
     }
     unsortedCards = [];
 };
